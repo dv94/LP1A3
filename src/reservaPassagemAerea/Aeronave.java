@@ -2,12 +2,14 @@ package reservaPassagemAerea;
 
 public class Aeronave {
 	
-	protected String modelo;
-	public Aeronave aeronave;
+protected String modelo;
+	
+	/*public Aeronave aeronave;
+	
 	
 	public Aeronave() {
 		this.aeronave = new Aeronave(); 
-	}
+	}*/
 	
 	//ConstrutorAeronave
 	public Aeronave(String modelo) {
@@ -25,10 +27,11 @@ public class Aeronave {
 		//AtribuiNovoModeloAoAtributoModelo 
 		return modelo;
 	}
+	
 
 	public String toString() {
-		return "----Aeronave---- " 
-			 + "modelo = " + modelo;
+		return    "Aeronave Cadastrada\n" 
+				+ "Modelo da Aeronave = " + modelo;
 	}
 
 }

@@ -5,38 +5,33 @@ import java.util.Arrays;
 public class Aviao extends Aeronave {
 	
 	public Passageiro[][] lugares;
-	public boolean verificarLugarOcupado;
+	public boolean verificaLugarOcupado; 
 	
-	
-	//Construtor
-	public Aviao(String modelo, int fileira, int assento) {
+	public Aviao(String modelo, int fileira, int assentos) {
 		super(modelo);
-		lugares = new Passageiro[fileira][assento];
+		lugares = new Passageiro[fileira][assentos];
 	}
 	
-	//Verifica se está disponivel o assento
-	public boolean verificarLugarOcupad(int fileira, int assento) {
-		if(lugares [fileira][assento] != null) {
+	//RecebeAsCoordenadasDeUmAssento
+	public boolean verificaLugarOcupado(int fileira, int assentos) {
+		if(lugares [fileira][assentos] != null) {
 			return true;
-		} else {
-			return false;
+		}else{
+			return false; 
 		}
 	}
 
-	public Passageiro[][] getLugares() {
-		return lugares;
+	//GETPassageiros
+	public Passageiro getPassageiro(int fileira, int assentos) {
+		return lugares[fileira][assentos];
 	}
 
-	public void setLugares(Passageiro[][] lugares) {
-		this.lugares = lugares;
+	//SETPassageiros
+	public void setPassageiro(int fileira, int assento, Passageiro p1) {
+		this.lugares[fileira][assento] = p1;
 	}
-
-
+	
 	public String toString() {
-		return "Aviao [lugares=" + Arrays.toString(lugares) + "]";
+		return "Aviao [lugares=" + Arrays.toString(lugares) + ", verificaLugarOcupado=" + verificaLugarOcupado + "]";
 	}
-	
-	
-	
-
 }

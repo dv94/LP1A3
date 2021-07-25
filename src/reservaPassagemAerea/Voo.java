@@ -2,46 +2,66 @@ package reservaPassagemAerea;
 
 public class Voo {
 	
-	private Aeronave aviao; 
+	private Aviao aeronave; 
 	private int numero;
 	private String data;
 	private String hora; 
 	
-	//Comnstrutor
-	public Voo(Aeronave aviao, int numero, String data, String hora) {
-		this.aviao = new Aeronave(); 
+	//default
+	public Voo() {}
+	
+	//ConstrutorVôo
+	public Voo(Aviao aeronave, int numero, String data, String hora) {
+		this.aeronave = aeronave;
 		this.numero = numero;
 		this.data = data;
 		this.hora = hora; 	
 	}
-
-	//GET
-	public Aeronave getAviao() {
-		return aviao;
-	}
 	
-	//RetornaOAtributoNúmeroDoVôo
+	//GET
 	public int getNumero() {
 		return numero;
 	}
 	
-	//RetornaOAtributoData
 	public String getData() {
 		return data;
 	}
-
-	//RetornaOAtributoHora
+	
 	public String getHora() {
 		return hora;
 	}
 
+	public Aviao getAeronave() {
+		return aeronave;
+	}
+
+
+	//SET
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
+	
+	public void setAeronave(Aviao aeronave) {
+		this.aeronave = aeronave;
+	}
+	
+
+
 	//DadosDoVôo
 	public String toString() {
-		return 	"---Voo---"
-				+ "Aviao  = " 		+ aviao 
-				+ "Numero = "		+ numero 
-				+ "Data   = " 		+ data 
-				+ "Hora   ="		+ hora ;
+		return 	  "*Vôo Cadastrado*\n"
+				+ "\nNúmero = "	+ numero 
+				+ "\nData   = " + data 
+				+ "\nHora   = " + hora
+				+ "\nAeronave =" + aeronave;
 	}
 
 }
