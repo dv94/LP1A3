@@ -6,6 +6,7 @@ public class Voo {
 	private int numero;
 	private String data;
 	private String hora; 
+
 	
 	//default
 	public Voo() {}

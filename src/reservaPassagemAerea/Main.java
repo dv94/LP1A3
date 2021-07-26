@@ -4,6 +4,7 @@ import java.io.*;
 import javax.swing.*;
 
 public class Main {
+	
 
 	//FunçõesDoParametroDoSistema
 		public static void parametroDoSistema() {
@@ -20,14 +21,18 @@ public class Main {
 				switch(opcaoSistema) {
 				
 				case 1:
+					
 					//ModeloAvião
 					String cadastrandoAeronave = JOptionPane.showInputDialog(null, "Digite o modelo da Aeronave:");
-					
+					//Indica quantas fileiras o avião posssui
+					int fileiras = Integer.parseInt(JOptionPane.showInputDialog(null, "O numero de fileiras"));
+					//Indica quantos assentos o avião posssui
+                    int assentos = Integer.parseInt(JOptionPane.showInputDialog(null, "O numero de assentos"));
 					//MostrandoOValorInseridoNaTela
 					//JOptionPane.showMessageDialog(null, cadastrandoAeronave);
 					
 					//InformaçõesDoAvião
-					Aeronave a = new Aeronave(cadastrandoAeronave); 
+					Aviao a = new Aviao(cadastrandoAeronave, fileiras, assentos);
 					JOptionPane.showMessageDialog(null, a.toString());
 				
 					break;
@@ -52,7 +57,7 @@ public class Main {
 					v.setHora(horaVoo);
 					
 					String NomedaAeronaveVoo = JOptionPane.showInputDialog(null, "Digite o Nome da Aeronave: ");
-					v.setAeronave(null);
+					v.setAviao(cadastrandoAeronave);
 					
 					/*Aeronave  aeronaveVoo = new Aeronave(NomedaAeronaveVoo);
 					JOptionPane.showInputDialog(null, "Digite a hora do Voo: ");*/
@@ -110,8 +115,8 @@ public class Main {
 					
 					JOptionPane.showMessageDialog(null, "Reservas Realizadas");
 					
-					Lugares[][] l = new Lugares[][](numFileira, numAssento);
-					JOptionPane.showMessageDialog(null, l.toString());
+					/*Lugar l = new Lugar(numFileira, numAssento);
+					JOptionPane.showMessageDialog(null, l.toString());*/
 					break;
 				case 4:
 					//voltandoParaOMenuPrincipal

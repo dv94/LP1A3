@@ -16,6 +16,7 @@ protected String modelo;
 		this.modelo = modelo; 
 	}
 	
+
 	//SETModelo
 	public void setModelo(String modelo) {
 		//retornaOModeloAeronave
