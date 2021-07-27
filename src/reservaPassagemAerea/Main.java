@@ -9,6 +9,8 @@ public class Main {
 	//FunçõesDoParametroDoSistema
 		public static void parametroDoSistema() {
 			int opcaoSistema = 0; 
+			Aviao a = null;
+			Voo v;
 			
 			do {
 				opcaoSistema = Integer.parseInt(JOptionPane.showInputDialog(
@@ -32,36 +34,37 @@ public class Main {
 					//JOptionPane.showMessageDialog(null, cadastrandoAeronave);
 					
 					//InformaçõesDoAvião
-					Aviao a = new Aviao(cadastrandoAeronave, fileiras, assentos);
+					a = new Aviao(cadastrandoAeronave, fileiras, assentos);
 					JOptionPane.showMessageDialog(null, a.toString());
 				
 					break;
 				case 2:
 					
-					Voo v = new Voo();
+					//Voo v = new Voo();
 					
 					
 					//NumeroDoVoo
 					int numeroVoo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o numero do voo: "));
 					//JOptionPane.showMessageDialog(null,numeroVoo);
-					v.setNumero(numeroVoo);
+					//v.setNumero(numeroVoo);
 					
 					//DataDoVoo
 					String dataVoo = JOptionPane.showInputDialog(null, "Digite a data do Voo: ");
 					//JOptionPane.showMessageDialog(null, dataVoo);
-					v.setData(dataVoo);
+					//v.setData(dataVoo);
 					
 					//HoraDoVoo
 					String horaVoo = JOptionPane.showInputDialog(null, "Digite a hora do Voo: ");
 					//JOptionPane.showMessageDialog(null, horaVoo);
-					v.setHora(horaVoo);
+					//v.setHora(horaVoo);
 					
-					String NomedaAeronaveVoo = JOptionPane.showInputDialog(null, "Digite o Nome da Aeronave: ");
-					v.setAviao(cadastrandoAeronave);
+					//String NomedaAeronaveVoo = JOptionPane.showInputDialog(null, "Digite o Nome da Aeronave: ");
+					//v.setAviao(null); - Verificar como realizar chamada
 					
 					/*Aeronave  aeronaveVoo = new Aeronave(NomedaAeronaveVoo);
 					JOptionPane.showInputDialog(null, "Digite a hora do Voo: ");*/
 					
+					v = new Voo(a, numeroVoo, dataVoo, horaVoo);
 					
 					JOptionPane.showMessageDialog(null, v.toString());
 					

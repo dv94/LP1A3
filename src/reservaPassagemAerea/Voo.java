@@ -9,7 +9,7 @@ public class Voo {
 
 	
 	//default
-	public Voo() {}
+	//public Voo() {}
 	
 	//ConstrutorVôo
 	public Voo(Aviao aeronave, int numero, String data, String hora) {
