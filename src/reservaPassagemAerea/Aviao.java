@@ -8,15 +8,17 @@ public class Aviao extends Aeronave {
 	public String mostraLugaresVazios;
 	public String mostraLugaresOcupados;
     int lugaresVazios = 0;
+   
 	
 	
 	public Aviao(String modelo, int fileira, int assentos) {
 		super(modelo);
 		lugares = new Passageiro[fileira][assentos];
+		
 	}
 	
 	//RecebeAsCoordenadasDeUmAssento
-	public boolean verificaLugarOcupado(int fileira, int assentos) {
+	public boolean verificaLugarOcupado(int fileira, int assentos) {		
 		if(lugares [fileira][assentos] != null) {
 			return true;
 		}else{
