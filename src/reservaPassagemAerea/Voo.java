@@ -59,10 +59,10 @@ public class Voo {
 	//DadosDoVôo
 	public String toString() {
 		return 	  "*Vôo Cadastrado*\n"
-				+ "\nNúmero = "	+ numero 
-				+ "\nData   = " + data 
-				+ "\nHora   = " + hora
-				+ "\nAeronave =" + aeronave;
+				+ "\nNúmero: "	+ numero 
+				+ "\nData:    " + data 
+				+ "\nHora:    " + hora
+				+ "\n\nAeronave: " + aeronave;
 	}
 
 }

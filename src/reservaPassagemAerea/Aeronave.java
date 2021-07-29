@@ -4,12 +4,6 @@ public class Aeronave {
 	
 protected String modelo;
 	
-	/*public Aeronave aeronave;
-	
-	
-	public Aeronave() {
-		this.aeronave = new Aeronave(); 
-	}*/
 	
 	//ConstrutorAeronave
 	public Aeronave(String modelo) {
@@ -32,7 +26,7 @@ protected String modelo;
 
 	public String toString() {
 		return    "Aeronave Cadastrada\n" 
-				+ "Modelo da Aeronave = " + modelo;
+				+ "\n" + modelo;
 	}
 
 }

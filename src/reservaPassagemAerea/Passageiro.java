@@ -33,8 +33,8 @@ public class Passageiro {
 
 	public String toString() {
 		return 	"---Passageiro---"
-				+ "Nome = " + nome 
-				+ "CPF 	= " + cpf;
+				+ "\nNome = " + nome 
+				+ "\nCPF 	= " + cpf;
 	}
 
 }

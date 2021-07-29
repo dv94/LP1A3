@@ -4,14 +4,15 @@ import java.io.*;
 import javax.swing.*;
 
 public class Main {
-	
+	//Variaveis globais
+	static Aviao a;
+	static Voo[] v = new Voo[10]; //Array da classe Voo
+	static int numeroDeVoos = 0; //número de voos criados (0 à 9)
 
 	//FunçõesDoParametroDoSistema
 		public static void parametroDoSistema() {
 			int opcaoSistema = 0; 
-			Aviao a = null;
-			Voo[] v = new Voo[10]; //Array da classe Voo
-			int numeroDeVoos = 0; //número de voos criados (0 à 9)
+			
 			
 			try {
 			
@@ -37,29 +38,23 @@ public class Main {
 						//InformaçõesDoAvião
 						a = new Aviao(cadastrandoAeronave, fileiras, assentos);
 						JOptionPane.showMessageDialog(null, a.toString());
-					
 						break;
 					case 2:
 						
-						//Voo v = new Voo();
 						if(a == null) {
 							JOptionPane.showMessageDialog(null,"Não há aeronave cadastrada");
 							break;
 						}
 						if(numeroDeVoos == 10) {
-							JOptionPane.showMessageDialog(null,"Já atigiu o numero de voos para aeronave");
+							JOptionPane.showMessageDialog(null,"Já atigiu o numero de voos");
 							break;
 						}
 						
 						//NumeroDoVoo
 						int numeroVoo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o numero do voo: "));
-						//JOptionPane.showMessageDialog(null,numeroVoo);
-						//v.setNumero(numeroVoo);
 						
 						//DataDoVoo
 						String dataVoo = JOptionPane.showInputDialog(null, "Digite a data do Voo: ");
-						//JOptionPane.showMessageDialog(null, dataVoo);
-						//v.setData(dataVoo);
 						
 						//HoraDoVoo
 						String horaVoo = JOptionPane.showInputDialog(null, "Digite a hora do Voo: ");
@@ -67,19 +62,13 @@ public class Main {
 						//Cadastra os dados na classe Voo da posição numeroDeVoos					
 						v[numeroDeVoos]= new Voo(a, numeroVoo, dataVoo, horaVoo);				
 						
-						
-						//JOptionPane.showMessageDialog(null, v[numeroDeVoos].toString());
-						
-						//VERIFICAR SE O PROFESSOR NÃO QUER QUE O showMessageDialog SEJA ASSIM JÁ QUE 
-						//FORAM CRIADOS GETTERS:
-					
+						//Mostra as informações armazenadas de cadastrar voo
 						String message =  "*Vôo Cadastrado*\n"
 				                + "\nNúmero = " + v[numeroDeVoos].getNumero() 
 				                + "\nData   = " + v[numeroDeVoos].getData() 
 				                + "\nHora   = " + v[numeroDeVoos].getHora()
 				                + "\nAeronave =" + v[numeroDeVoos].getAeronave();
 						JOptionPane.showMessageDialog(null, message);
-						
 						
 						numeroDeVoos ++; //Atualiza o número de voos existentes
 						
@@ -117,31 +106,50 @@ public class Main {
 					
 					switch(opcaoReserva) {
 					case 1:
-						String nomePassageiro = JOptionPane.showInputDialog(null, "Digite seu nome: ");
-						//JOptionPane.showMessageDialog(null, nomePassageiro);
+						//Solicita o numero do Voo
+						String numeroVoo = JOptionPane.showInputDialog(null, "Informe o numero do Voo apartir de 0: ");
+						//Valida se existe o numero do voo
+						Aviao aeronave =  v[Integer.parseInt(numeroVoo)].getAeronave();
 						
-						String cpfPassageiro = JOptionPane.showInputDialog(null, "Digite seu CPF: ");
-						//JOptionPane.showMessageDialog(null, cpfPassageiro);
+						if(aeronave.verificarSeExisteLugaresDisponiveis()) {
+							//Solicita o nome 
+							String nomePassageiro = JOptionPane.showInputDialog(null, "Digite seu nome: ");
+							//Solicita o cpf 
+							String cpfPassageiro = JOptionPane.showInputDialog(null, "Digite seu CPF: ");
+							
+							Passageiro p = new Passageiro(nomePassageiro, cpfPassageiro); 
+							JOptionPane.showMessageDialog(null, p.toString());
+							//Realiza a escolha do assento e fileira
+							String fileira = JOptionPane.showInputDialog(null,  aeronave.getFileirasVazias() + " \n Digite a Fileira do assento: ");
+							String assento = JOptionPane.showInputDialog(null,  aeronave.getLugaresVazios(Integer.parseInt(fileira)) + " \n Digite o Assento do assento: "); //Mostra os assentos da fileira "Integer.parseInt(fileira)"
+							if (aeronave.verificaLugarOcupado( Integer.parseInt(fileira), Integer.parseInt(assento))) {
+									JOptionPane.showMessageDialog(null, "Assento ocupado");
+
+							}else{
+								//Estando tudo certo na reserva devolve a mensagem
+								v[Integer.parseInt(numeroVoo)].getAeronave().setPassageiro(Integer.parseInt(fileira), Integer.parseInt(assento), p);
+								JOptionPane.showMessageDialog(null, "Reserva realizada \n nome: " + p.getNome() + "\n fileira: " + fileira + "\n assento: " + assento );
+							}
+						}else{
+							//Informa o cliente a mensagem caso não exista mais lugares
+							JOptionPane.showMessageDialog(null, "Não existem mais lugares disponiveis");
+						}
 						
-						Passageiro p = new Passageiro(nomePassageiro, cpfPassageiro); 
-						JOptionPane.showMessageDialog(null, p.toString());
+						
 						
 						break; 
 					case 2:
-						JOptionPane.showMessageDialog(null, "Consultando Lugares Vazios");
-						//Lugares l = new Lugares(numfileira, numassento);
-						//JOptionPane.showMessageDialog(null, l.toString());
+						//Mostra os lugares vazios
+						int voo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do Voo: "));
+						JOptionPane.showMessageDialog(null, "Lugares vazios\n" + v[voo].getAeronave().mostraLugaresVazios());
 						
 						break; 
 					case 3:
-						int numFileira = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o numero do Fileira: "));
+						//Mostra os lugares reservados
+						int aviaoVoo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do Voo: "));
+						JOptionPane.showMessageDialog(null, "Reservas Realizadas\n" + v[aviaoVoo].getAeronave().mostraLugaresOcupados());
 						
-						int numAssento = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o numero do Assento: "));
 						
-						JOptionPane.showMessageDialog(null, "Reservas Realizadas");
-						
-						/*Lugar l = new Lugar(numFileira, numAssento);
-						JOptionPane.showMessageDialog(null, l.toString());*/
 						break;
 					case 4:
 						//voltandoParaOMenuPrincipal
@@ -166,7 +174,11 @@ public class Main {
 		//ClassePrincipal
 		public static void main(String[] args) {
 			
+		
 			int opcao = 0;
+
+			
+			
 			try {
 				do {
 					
