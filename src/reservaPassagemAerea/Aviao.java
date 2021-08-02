@@ -37,7 +37,7 @@ public class Aviao extends Aeronave {
 
 	            for (int assent = 0; assent < this.lugares[fileira].length; assent++) {
 	                if (!this.verificaLugarOcupado(fileira, assent))
-	                    lista += "" + (assent) + " ";
+	                    lista += "" + (assent) + " | ";
 	            }
 
 	            lista+="]\n";
@@ -55,7 +55,7 @@ public class Aviao extends Aeronave {
 
 	            for (int assent = 0; assent < this.lugares[fileira].length; assent++) {
 	                if (this.verificaLugarOcupado(fileira, assent))
-	                    lista += "" + (assent) + " ";
+	                    lista += "" + (assent) + " | ";
 	            }
 	            
 	            lista+="]\n";

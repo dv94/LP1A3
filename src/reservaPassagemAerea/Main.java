@@ -30,21 +30,27 @@ public class Main {
 						
 						//ModeloAvião
 						String cadastrandoAeronave = JOptionPane.showInputDialog(null, "Digite o modelo da Aeronave:");
+						
 						//Indica quantas fileiras o avião posssui
-						int fileiras = Integer.parseInt(JOptionPane.showInputDialog(null, "O numero da fileiras"));
+						int fileiras = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite quantas Fileiras a Aeronave terá: "));
+						
 						//Indica quantos assentos o avião posssui
-	                    int assentos = Integer.parseInt(JOptionPane.showInputDialog(null, "O numero do assentos"));
+	                    int assentos = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite quantos Assentos a Aeronave terá: "));
 						
 						//InformaçõesDoAvião
 						a = new Aviao(cadastrandoAeronave, fileiras, assentos);
 						JOptionPane.showMessageDialog(null, a.toString());
 						break;
+						
 					case 2:
 						
+						//Verifica se a aeronave já foi cadastrada, caso não há ele barra acontinuação
 						if(a == null) {
 							JOptionPane.showMessageDialog(null,"Não há aeronave cadastrada");
 							break;
 						}
+						
+						//Verifica se o numero de voos cadastrados excedeu o valor de 10 voos
 						if(numeroDeVoos == 10) {
 							JOptionPane.showMessageDialog(null,"Já atigiu o numero de voos");
 							break;
@@ -59,15 +65,15 @@ public class Main {
 						//HoraDoVoo
 						String horaVoo = JOptionPane.showInputDialog(null, "Digite a hora do Voo: ");
 						
-						//Cadastra os dados na classe Voo da posição numeroDeVoos					
+						//Cadastra os dados na classe Voo da posição numeroDeVoos e armazena.				
 						v[numeroDeVoos]= new Voo(a, numeroVoo, dataVoo, horaVoo);				
 						
 						//Mostra as informações armazenadas de cadastrar voo
 						String message =  "*Vôo Cadastrado*\n"
-				                + "\nNúmero = " + v[numeroDeVoos].getNumero() 
-				                + "\nData   = " + v[numeroDeVoos].getData() 
-				                + "\nHora   = " + v[numeroDeVoos].getHora()
-				                + "\nAeronave =" + v[numeroDeVoos].getAeronave();
+				                + "\nNúmero   : " + v[numeroDeVoos].getNumero() 
+				                + "\nData     : " + v[numeroDeVoos].getData() 
+				                + "\nHora     : " + v[numeroDeVoos].getHora()
+				                + "\nAeronave : " + v[numeroDeVoos].getAeronave();
 						JOptionPane.showMessageDialog(null, message);
 						
 						numeroDeVoos ++; //Atualiza o número de voos existentes
@@ -78,7 +84,7 @@ public class Main {
 					default:
 						JOptionPane.showMessageDialog(null,"Opção Inválida");
 						break;
-					}
+					}//fechamento:SWITCH
 					
 				}while(opcaoSistema!=3);
 			}
@@ -86,11 +92,11 @@ public class Main {
 				
 			}
 			
-			
-		}
+		}//fechamento:ParametroDoSistema
 		
 		//FunçãoReservaDePassagens
 		public static void reservaDePassagens() {
+			
 			int opcaoReserva = 0; 
 			
 			try {
@@ -106,8 +112,10 @@ public class Main {
 					
 					switch(opcaoReserva) {
 					case 1:
+						
 						//Solicita o numero do Voo
-						String numeroVoo = JOptionPane.showInputDialog(null, "Informe o numero do Voo apartir de 0: ");
+						String numeroVoo = JOptionPane.showInputDialog(null, "Digite o Número do Vôo Cadastrado a partir do 0 (0 até 9): ");
+						
 						//Valida se existe o numero do voo
 						Aviao aeronave =  v[Integer.parseInt(numeroVoo)].getAeronave();
 						
@@ -117,38 +125,48 @@ public class Main {
 							//Solicita o cpf 
 							String cpfPassageiro = JOptionPane.showInputDialog(null, "Digite seu CPF: ");
 							
+							//Armazena e mostra os dados solicitados nome e cpf
 							Passageiro p = new Passageiro(nomePassageiro, cpfPassageiro); 
 							JOptionPane.showMessageDialog(null, p.toString());
-							//Realiza a escolha do assento e fileira
+							
+							//Realiza a escolha do assento e fileira, valida se o o assento e fileira estão vazio e se estiver armazena
 							String fileira = JOptionPane.showInputDialog(null,  aeronave.getFileirasVazias() + " \n Digite a Fileira do assento: ");
-							String assento = JOptionPane.showInputDialog(null,  aeronave.getLugaresVazios(Integer.parseInt(fileira)) + " \n Digite o Assento do assento: "); //Mostra os assentos da fileira "Integer.parseInt(fileira)"
+							String assento = JOptionPane.showInputDialog(null,  aeronave.getLugaresVazios(Integer.parseInt(fileira)) + " \n Digite o numero do assento: "); //Mostra os assentos da fileira "Integer.parseInt(fileira)"
 							if (aeronave.verificaLugarOcupado( Integer.parseInt(fileira), Integer.parseInt(assento))) {
-									JOptionPane.showMessageDialog(null, "Assento ocupado");
+									JOptionPane.showMessageDialog(null, "Assento ocupado, informe outro assento");
 
 							}else{
 								//Estando tudo certo na reserva devolve a mensagem
 								v[Integer.parseInt(numeroVoo)].getAeronave().setPassageiro(Integer.parseInt(fileira), Integer.parseInt(assento), p);
-								JOptionPane.showMessageDialog(null, "Reserva realizada \n nome: " + p.getNome() + "\n fileira: " + fileira + "\n assento: " + assento );
+								
+								//Mostra que a reserva foi realizada e mostra a informação de nome, fileira e assento ao usuario.
+								JOptionPane.showMessageDialog(null, "Reserva realizada \n nome: " + p.getNome() + "\n Fileira: " + fileira + "\n Assento: " + assento );
 							}
 						}else{
 							//Informa o cliente a mensagem caso não exista mais lugares
-							JOptionPane.showMessageDialog(null, "Não existem mais lugares disponiveis");
+							JOptionPane.showMessageDialog(null, "Não existe mais lugares disponiveis!!");
 						}
-						
-						
 						
 						break; 
 					case 2:
+						
+						
+						//Solicita a posição do voo cadastrado
+						int voo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do Vôo Cadastrado (0 até 9): "));
+						
+						
+						
 						//Mostra os lugares vazios
-						int voo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do Voo: "));
-						JOptionPane.showMessageDialog(null, "Lugares vazios\n" + v[voo].getAeronave().mostraLugaresVazios());
+						JOptionPane.showMessageDialog(null, "Lugares vazios\n" + v[voo].getAeronave().getModelo() + "\nLugares Vazios\n" + v[voo].getAeronave().mostraLugaresVazios());
 						
-						break; 
+						break;
+						
 					case 3:
-						//Mostra os lugares reservados
-						int aviaoVoo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do Voo: "));
-						JOptionPane.showMessageDialog(null, "Reservas Realizadas\n" + v[aviaoVoo].getAeronave().mostraLugaresOcupados());
 						
+						//Solicita a posição do voo cadastrado
+						int aviaoVoo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do Vôo Cadastrado (0 até 9): "));
+						//Mostra os lugares reservados
+						JOptionPane.showMessageDialog(null, "Reservas Realizadas\n" + v[aviaoVoo].getAeronave().getModelo() + "\nReserva Realizada\n"+ v[aviaoVoo].getAeronave().mostraLugaresOcupados());						
 						
 						break;
 					case 4:
@@ -167,7 +185,7 @@ public class Main {
 		}
 		
 		public static void sair() {
-			JOptionPane.showMessageDialog(null, "Saindo");
+			JOptionPane.showMessageDialog(null, "Obrigado pela Preferência!!");
 		}
 		
 		
@@ -176,8 +194,6 @@ public class Main {
 			
 		
 			int opcao = 0;
-
-			
 			
 			try {
 				do {
@@ -202,12 +218,12 @@ public class Main {
 						default:
 							JOptionPane.showMessageDialog(null, "Opção Inválida");
 							break;
-						}
+						}//fechamento:SWITCH
 						
 				}while(opcao!=3);
 			 }catch(Exception e) {
 				
 			}
-		}
+		}//fechamento:Main(String[]...)
 
-}
+}//fechamento:MenuPrincipal
