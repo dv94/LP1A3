@@ -57,7 +57,7 @@ public class Main {
 						}
 						
 						//NumeroDoVoo
-						int numeroVoo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o numero do voo apartir de 0: "));
+						int numeroVoo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o numero do voo a partir do numero 0: "));
 						
 						//DataDoVoo
 						String dataVoo = JOptionPane.showInputDialog(null, "Digite a data do Voo: ");
