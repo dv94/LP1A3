@@ -112,6 +112,11 @@ public class Main {
 					
 					switch(opcaoReserva) {
 					case 1:
+						//Valida se existe um voo cadastrado caso não haja ele apresenta essa mensagem.
+						if(v[0] == null) {
+							JOptionPane.showMessageDialog(null, "Cadastre uma aeronave e um voo !!!");
+							break;
+						}
 						
 						//Solicita o numero do Voo
 						String numeroVoo = JOptionPane.showInputDialog(null, "Digite o Número do Vôo Cadastrado a partir do 0 (0 até 9): ");
@@ -150,10 +155,14 @@ public class Main {
 						break; 
 					case 2:
 						
+						//Valida se existe um voo cadastrado caso não haja ele apresenta essa mensagem.
+						if(v[0] == null) {
+							JOptionPane.showMessageDialog(null, "Cadastre uma aeronave e um voo !!!");
+							break;
+						}
 						
 						//Solicita a posição do voo cadastrado
 						int voo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do Vôo Cadastrado (0 até 9): "));
-						
 						
 						
 						//Mostra os lugares vazios
@@ -162,6 +171,12 @@ public class Main {
 						break;
 						
 					case 3:
+						
+						//Valida se existe um voo cadastrado caso não haja ele apresenta essa mensagem.
+						if(v[0] == null) {
+							JOptionPane.showMessageDialog(null, "Cadastre uma aeronave e um voo !!!");
+							break;
+						}
 						
 						//Solicita a posição do voo cadastrado
 						int aviaoVoo = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o número do Vôo Cadastrado (0 até 9): "));
@@ -180,7 +195,7 @@ public class Main {
 				}while(opcaoReserva != 4);
 			}
 			catch(Exception e) {
-				
+				JOptionPane.showMessageDialog(null,"Informe um numero inteiro !!!");
 			}
 		}
 		
