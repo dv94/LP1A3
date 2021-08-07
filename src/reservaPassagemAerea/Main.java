@@ -4,7 +4,7 @@ import java.io.*;
 import javax.swing.*;
 
 public class Main {
-	//Variaveis globais
+	//Variaveis/Objeto globais
 	static Aviao a;
 	static Voo[] v = new Voo[10]; //Array da classe Voo
 	static int numeroDeVoos = 0; //número de voos criados (0 à 9)
@@ -89,7 +89,7 @@ public class Main {
 				}while(opcaoSistema!=3);
 			}
 			catch(Exception e) {
-				
+				JOptionPane.showMessageDialog(null,"Informe um numero inteiro !!!");
 			}
 			
 		}//fechamento:ParametroDoSistema
@@ -114,7 +114,7 @@ public class Main {
 					case 1:
 						//Valida se existe um voo cadastrado caso não haja ele apresenta essa mensagem.
 						if(v[0] == null) {
-							JOptionPane.showMessageDialog(null, "Cadastre uma aeronave e um voo !!!");
+							JOptionPane.showMessageDialog(null, "Cadastre um voo !!!");
 							break;
 						}
 						
@@ -157,7 +157,7 @@ public class Main {
 						
 						//Valida se existe um voo cadastrado caso não haja ele apresenta essa mensagem.
 						if(v[0] == null) {
-							JOptionPane.showMessageDialog(null, "Cadastre uma aeronave e um voo !!!");
+							JOptionPane.showMessageDialog(null, "Cadastre um voo !!!");
 							break;
 						}
 						
@@ -174,7 +174,7 @@ public class Main {
 						
 						//Valida se existe um voo cadastrado caso não haja ele apresenta essa mensagem.
 						if(v[0] == null) {
-							JOptionPane.showMessageDialog(null, "Cadastre uma aeronave e um voo !!!");
+							JOptionPane.showMessageDialog(null, "Cadastre um voo !!!!");
 							break;
 						}
 						
