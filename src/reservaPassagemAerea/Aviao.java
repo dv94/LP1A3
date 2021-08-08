@@ -116,7 +116,7 @@ public class Aviao extends Aeronave {
 	}
 	
 	public String toString() {
-        return " " +  modelo 
+        return " " +  modelo
         		+ 
         		"\nFileiras: " + lugares.length 
         		+ 
